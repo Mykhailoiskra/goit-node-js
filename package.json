@@ -22,5 +22,8 @@
   "homepage": "https://github.com/Mykhailoiskra/goit-node-js#readme",
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "yargs": "^16.2.0"
   }
 }

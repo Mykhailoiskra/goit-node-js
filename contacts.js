@@ -5,12 +5,16 @@ import createDirname from "./lib/dirname.js";
 const { __dirname } = createDirname(import.meta.url);
 
 const contactsPath = path.join(__dirname, "./db/contacts.json");
-console.log(contactsPath);
 
-function listContacts() {
-  // ...твой код
+export async function listContacts() {
+  try {
+    const data = await fs.readFile(contactsPath);
+    const parsedData = data.toString();
+    console.table(parsedData);
+  } catch (err) {
+    console.log(err.message);
+  }
 }
-
 function getContactById(contactId) {
   // ...твой код
 }
