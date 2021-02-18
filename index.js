@@ -1,7 +1,13 @@
-// const argv = require("yargs").argv;
-import argv from "yargs";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
+import {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+} from "./contacts.js";
 
-import { listContacts } from "./contacts.js";
+const argv = yargs(hideBin(process.argv)).argv;
 
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
@@ -10,15 +16,15 @@ function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "get":
-      // ... id
+      getContactById(id);
       break;
 
     case "add":
-      // ... name email phone
+      addContact(name, email, phone);
       break;
 
     case "remove":
-      // ... id
+      removeContact(id);
       break;
 
     default:
@@ -26,4 +32,4 @@ function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-// invokeAction(argv);
+invokeAction(argv);
